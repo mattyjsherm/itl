@@ -899,30 +899,62 @@ function LandingScreen({ onStart }) {
     <PhoneFrame>
       <StatusBar />
       <div className="flex flex-col" style={{ minHeight: '700px' }}>
-        <div className="flex-1 flex flex-col items-center justify-center px-6 pt-16 pb-10">
-          {/* Infinity mark — quiet, confident, large */}
+        <div className="flex-1 flex flex-col items-center px-6 pt-10 pb-8">
+          {/* Infinity mark — sized down a touch to make room for the hero line below */}
           <div className="relative" style={{ filter: `drop-shadow(0 14px 32px ${colors.brandMid}25)` }}>
-            <MarkLarge size={180} color={colors.blue}/>
+            <MarkLarge size={140} color={colors.blue}/>
           </div>
 
-          {/* Wordmark sits below the mark, completing the lockup */}
-          <div className="mt-6">
-            <Wordmark size={26} color="#0B2B58"/>
+          {/* Wordmark — sits below the mark, completing the lockup */}
+          <div className="mt-5">
+            <Wordmark size={22} color="#0B2B58"/>
           </div>
 
-          <p className="mt-3 text-[13.5px] text-gray-600">Brief in minutes. Broad on purpose.</p>
+          {/* Hero line — heavier, tighter, more editorial confidence */}
+          <h1 className="mt-7 text-center text-[26px] leading-[1.08] max-w-[320px]"
+            style={{
+              fontFamily: "'Fraunces Variable', Fraunces, Georgia, serif",
+              fontWeight: 600,
+              fontVariationSettings: "'opsz' 144",
+              letterSpacing: '-0.022em',
+              color: '#0F1419'
+            }}>
+            Stay informed without doom-scrolling.
+          </h1>
 
-          {/* Three-line value prop */}
-          <div className="mt-7 space-y-2.5 w-full max-w-[280px]">
+          {/* Tagline — body sans, slightly heavier, more readable contrast */}
+          <p className="mt-3.5 text-center text-[13.5px] leading-[1.5] max-w-[300px]"
+            style={{
+              fontFamily: "'Inter Variable', Inter, sans-serif",
+              fontWeight: 450,
+              color: '#4A5568',
+              letterSpacing: '-0.005em'
+            }}>
+            Two minutes in line for coffee. Five on the train. Fifteen at lunch. ITL is the trusted place to stay current — with whatever time you have.
+          </p>
+
+          {/* Value props — coverage transparency leads (editorial credentialing first) */}
+          <div className="mt-7 space-y-3 w-full max-w-[300px]">
             {[
-              { dot: colors.brandBright, text: 'Read in two minutes or fifteen — your time, your call.' },
-              { dot: colors.brandMint, text: 'See how a story is being covered: reporting, analysis, opinion.' },
-              { dot: colors.brandCyan, text: 'Background that adapts to what you already know.' },
-              { dot: '#C4B5FD', text: 'Curated to widen your aperture, not narrow it.' },
+              { dot: colors.brandBright, text: 'Two paragraphs catch you up. Full sources wait when something pulls you in.' },
+              { dot: colors.brandMint, text: 'Reporting, analysis, opinion — clearly marked.' },
+              { dot: colors.brandCyan, text: 'Background that adapts as you learn.' },
+              { dot: '#C4B5FD', text: 'Built to widen your view, not narrow it.' },
             ].map((v, i) => (
-              <div key={i} className="flex items-start gap-2.5">
-                <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: v.dot }}/>
-                <p className="text-[12.5px] text-gray-600 leading-relaxed">{v.text}</p>
+              <div key={i} className="flex gap-2.5">
+                {/* Dot wrapper matches the line-height of the text, so the dot centers on the cap height */}
+                <div className="flex-shrink-0 flex items-center" style={{ height: '20px' }}>
+                  <span className="block w-[6px] h-[6px] rounded-full" style={{ background: v.dot }}/>
+                </div>
+                <p className="text-[13px] leading-[1.55]"
+                  style={{
+                    fontFamily: "'Inter Variable', Inter, sans-serif",
+                    fontWeight: 600,
+                    color: '#1F2937',
+                    letterSpacing: '-0.005em'
+                  }}>
+                  {v.text}
+                </p>
               </div>
             ))}
           </div>
@@ -931,7 +963,7 @@ function LandingScreen({ onStart }) {
           <button onClick={onStart}
             className="w-full py-4 rounded-2xl text-sm font-medium flex items-center justify-center gap-2 text-white transition-opacity hover:opacity-90"
             style={{ background: `linear-gradient(135deg, ${colors.brandMid} 0%, ${colors.brandBright} 100%)`, boxShadow: `0 6px 20px ${colors.brandMid}30` }}>
-            Get started <ArrowRight className="w-4 h-4"/>
+            Try today's brief <ArrowRight className="w-4 h-4"/>
           </button>
           <p className="text-center text-xs text-gray-400 mt-4">Returning? <span style={{ color: colors.blue }} className="font-medium">Sign in</span></p>
         </div>
